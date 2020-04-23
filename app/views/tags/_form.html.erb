@@ -1,0 +1,20 @@
+<%= form_for(@tag) do |t| %>
+  <ul>
+  <% @tag.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+  <p>
+    <%= t.label :name %><br />
+    <%= t.text_field :name %>
+  </p>
+
+  <p>
+    <%= t.submit %>
+  </p>
+<% end %>
+<% if @tag.name != nil %>
+  <%= link_to "Delete", tag_path(@tag), method: :delete, data: {confirm: "Really delete the Tag?"} %>
+<%end%>
+<%= link_to "Back", :back %><br>
+<%= link_to "Back to Tags", tags_path %>
