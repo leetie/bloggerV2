@@ -1,9 +1,9 @@
 class AuthorsController < ApplicationController
-  before_action :set_author, only: [:show, :edit, :update, :destroy]
-  before_action :require_login, except: [:new, :create]
+  #before_action :set_author, only: [:show, :edit, :update, :destroy]
+  #before_action :require_login, except: [:new, :create]
 
       #this code fucks with author_sessions and authors
-  before_filter :zero_authors_or_authenticated, only: [:new, :create]
+  #before_filter :zero_authors_or_authenticated, only: [:new, :create]
 
   def zero_authors_or_authenticated
     unless Author.count == 0 || current_user
@@ -15,12 +15,17 @@ class AuthorsController < ApplicationController
   # GET /authors
   # GET /authors.json
   def index
-    @authors = Author.all
+    if current_user.email == "savvyjesse@aol.com"
+      @authors = Author.all
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /authors/1
   # GET /authors/1.json
   def show
+    @author = Author.find(params[:id])
   end
 
   # GET /authors/new
@@ -30,6 +35,7 @@ class AuthorsController < ApplicationController
 
   # GET /authors/1/edit
   def edit
+    @author = Author.find(params[:id])
   end
 
   # POST /authors
@@ -52,6 +58,7 @@ class AuthorsController < ApplicationController
   # PATCH/PUT /authors/1.json
   def update
     respond_to do |format|
+      @author = Author.find(params[:id])
       if @author.update(author_params)
         format.html { redirect_to @author, notice: 'Author was successfully updated.' }
         format.json { render :show, status: :ok, location: @author }
@@ -65,6 +72,7 @@ class AuthorsController < ApplicationController
   # DELETE /authors/1
   # DELETE /authors/1.json
   def destroy
+    @author = Author.find(params[:id])
     @author.destroy
     respond_to do |format|
       format.html { redirect_to authors_url, notice: 'Author was successfully destroyed.' }
