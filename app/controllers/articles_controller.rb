@@ -17,7 +17,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    # @author = current_user.email
     @article = Article.new(article_params)
+    @article.author = current_user.username
     @article.save
     flash.notice = "Article '#{@article.title}' Created!"
     redirect_to article_path(@article)

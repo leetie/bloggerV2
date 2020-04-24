@@ -20,6 +20,10 @@
   </p>
 
   <p>
+    <% @article.author = current_user.email %>
+  </p>
+
+  <p>
     <% if @article.image.exists? %>
       <%= image_tag @article.image.url(:medium) %><br />
     <% end %>

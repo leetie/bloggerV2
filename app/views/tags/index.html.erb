@@ -8,4 +8,6 @@
   <% end %>
 </ul>
 <%= link_to "To Articles", articles_path %><br>
-<%= link_to "Create New Tag", new_tag_path, class: "new_tag" %>
+<% if logged_in? %>
+  <%= link_to "Create New Tag", new_tag_path, class: "new_tag" %>
+<% end %>

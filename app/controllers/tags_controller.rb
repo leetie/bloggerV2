@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   include TagsHelper
-  before_action :require_login, only: [:destroy]
+  before_action :require_login, except: [:index, :show]
   def show
     @tag = Tag.find(params[:id])
   end
