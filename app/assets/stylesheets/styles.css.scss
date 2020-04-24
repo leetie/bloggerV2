@@ -22,6 +22,10 @@ a {
   overflow: hidden;
 }
 
+p {
+  max-height: max-content;
+}
+
 #container {
   width: 75%;
   margin: 0 auto;
