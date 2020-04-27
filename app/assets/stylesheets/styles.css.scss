@@ -1,7 +1,7 @@
 $primary_color: rgb(250, 241, 203);
 
 body {
-  background-image: url("Ubuntu_gel_by_Midge_Mantissa_Sinnaeve.jpg");
+  background-image: image-url("Ubuntu_gel_by_Midge_Mantissa_Sinnaeve.jpg");
   text-align: center;
   background-color: $primary_color;
   font: {
@@ -31,7 +31,7 @@ p {
 #container {
   width: 75%;
   margin: 0 auto;
-  background: rgb(201, 39, 216);
+  background: rgb(216, 39, 63);
   padding: 20px 40px;
   border: solid 1px black;
   margin-top: 20px;
